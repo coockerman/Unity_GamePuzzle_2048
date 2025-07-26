@@ -9,8 +9,17 @@ public class TileBoard : MonoBehaviour
 
     private TileGrid grid;
     private List<Tile> tiles;
+    
+    public List<Tile> GetTiles()
+    {
+        return tiles;
+    }
     private bool waiting;
 
+    public int Width => grid.Width;
+    public int Height => grid.Height;
+
+    
     private void Awake()
     {
         grid = GetComponentInChildren<TileGrid>();
@@ -74,6 +83,22 @@ public class TileBoard : MonoBehaviour
         }
     }
 
+    public void MoveByAI(Vector2Int direction)
+    {
+        if (waiting) return;
+
+        if (direction == Vector2Int.up) {
+            Move(Vector2Int.up, 0, 1, 1, 1);
+        } else if (direction == Vector2Int.down) {
+            Move(Vector2Int.down, 0, 1, grid.Height - 2, -1);
+        } else if (direction == Vector2Int.left) {
+            Move(Vector2Int.left, 1, 1, 0, 1);
+        } else if (direction == Vector2Int.right) {
+            Move(Vector2Int.right, grid.Width - 2, -1, 0, 1);
+        }
+    }
+
+    
     private bool MoveTile(Tile tile, Vector2Int direction)
     {
         TileCell newCell = null;

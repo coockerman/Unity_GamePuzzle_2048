@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI hiscoreText;
 
+    private AIPlayerExpectimax ai;
+    
     public int score { get; private set; } = 0;
 
     private void Awake()
     {
         if (Instance != null) {
-            DestroyImmediate(gameObject);
+            DestroyImmediate(gameObject); 
+            //Todo Immediate??
         } else {
             Instance = this;
         }
@@ -32,11 +35,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ai = GetComponent<AIPlayerExpectimax>();
         NewGame();
     }
 
     public void NewGame()
     {
+        
         // reset score
         SetScore(0);
         hiscoreText.text = LoadHiscore().ToString();
@@ -50,10 +55,30 @@ public class GameManager : MonoBehaviour
         board.CreateTile();
         board.CreateTile();
         board.enabled = true;
+        
+        if (ai != null)
+        {
+            Debug.Log("[GameManager] AI Game Start!");
+            ai.SetActiveAI(true);
+        }
     }
 
+    public void ChangeStatusAI()
+    {
+        if (ai != null)
+        {
+            ai.SetActiveAI(!ai.isActiveAI);
+            Debug.Log("[GameManager] AI Status Changed: " + ai.enabled);
+        }
+    }
     public void GameOver()
     {
+        if (ai != null)
+        {
+            Debug.Log("[GameManager] Game Over!");
+            ai.SetActiveAI(false);
+        }
+            
         board.enabled = false;
         gameOver.interactable = true;
 
