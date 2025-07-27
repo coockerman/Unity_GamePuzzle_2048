@@ -1,6 +1,6 @@
 # 2048 (Phiên bản Nâng Cấp)
 
-> Đây là trò chơi 2048 được phát triển dựa trên source code gốc của tác giả **Gabriele Cirulli**, với nhiều nâng cấp và cải tiến. Mục tiêu của trò chơi vẫn là trượt các ô số trên bảng để kết hợp chúng, cố gắng đạt đến ô số 2048.  
+> Đây là trò chơi 2048 được phát triển dựa trên source code unity gốc của tác giả **Zigurous**, với nhiều nâng cấp và cải tiến. Mục tiêu của trò chơi vẫn là trượt các ô số trên bảng để kết hợp chúng, cố gắng đạt đến ô số 2048.  
 > Phiên bản này được phát triển bằng **Unity 6.0000.0.33f1**, bổ sung thêm **cấp độ (Level) mới** và **chế độ tự động chơi (AI)**.
 
 ---
@@ -9,8 +9,8 @@
 
 - **Chủ đề**: Giao diện người dùng (UI), Bảng lưới (Grid), Hiệu ứng Animation
 - **Phiên bản**: 6.0000.0.33f1
-- **Build WebGL**: [**Chơi ngay tại đây**] :(LINK_WEBGL_CỦA_BẠN)
-- **Source Code Gốc**: Phát triển dựa trên dự án của [Gabriele Cirulli](https://github.com/gabrielecirulli/2048).
+- **Build WebGL**: [**Chơi ngay tại đây**](https://nghai12.itch.io/game-2048)
+- **Source Code Gốc**: Phát triển dựa trên dự án của [Zigurous](https://github.com/zigurous/unity-2048-tutorial).
 
 ---
 
@@ -33,4 +33,4 @@
 
 ## Ghi Chú
 
-Dự án này được nâng cấp từ bản gốc và phát triển thêm nhiều tính năng đặc biệt.
+Dự án này được nâng cấp từ bản gốc ban đầu và phát triển thêm nhiều tính năng đặc biệt.
