@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CanvasGroup gameOver;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI hiscoreText;
-
+    [SerializeField] private string highScoreName = "";
     private AIPlayerExpectimax ai;
     
     public int score { get; private set; } = 0;
@@ -56,19 +57,14 @@ public class GameManager : MonoBehaviour
         board.CreateTile();
         board.enabled = true;
         
-        if (ai != null)
-        {
-            Debug.Log("[GameManager] AI Game Start!");
-            ai.SetActiveAI(true);
-        }
     }
 
     public void ChangeStatusAI()
     {
         if (ai != null)
         {
-            ai.SetActiveAI(!ai.isActiveAI);
-            Debug.Log("[GameManager] AI Status Changed: " + ai.enabled);
+            ai.SetActiveAI(!ai.IsActive);
+            Debug.Log("AI Status Changed: " + ai.IsActive);
         }
     }
     public void GameOver()
@@ -121,13 +117,17 @@ public class GameManager : MonoBehaviour
         int hiscore = LoadHiscore();
 
         if (score > hiscore) {
-            PlayerPrefs.SetInt("hiscore", score);
+            PlayerPrefs.SetInt(highScoreName, score);
         }
     }
 
     private int LoadHiscore()
     {
-        return PlayerPrefs.GetInt("hiscore", 0);
+        return PlayerPrefs.GetInt(highScoreName, 0);
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
